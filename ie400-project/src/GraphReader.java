@@ -13,11 +13,11 @@ import java.io.IOException;
 import java.util.Iterator;
 
 public class GraphReader {
-    public static Graph read(String filepath) {
+    public static Graph read(String inputPath) {
         Graph graph = new Graph();
 
         try {
-            FileInputStream excelFile = new FileInputStream(new File(filepath));
+            FileInputStream excelFile = new FileInputStream(new File(inputPath));
             Workbook workbook = new XSSFWorkbook(excelFile);
 
             Sheet pointsSheet = workbook.getSheetAt(0);
@@ -54,10 +54,5 @@ public class GraphReader {
         }
 
         return graph;
-    }
-
-    public static void main(String[] args) {
-        Graph graph = GraphReader.read("resources/data.xlsx");
-        System.out.println(graph.getPoints());
     }
 }

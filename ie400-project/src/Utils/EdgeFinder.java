@@ -1,3 +1,5 @@
+package Utils;
+
 import model.Block;
 import model.Edge;
 import model.Graph;
@@ -6,25 +8,28 @@ import model.Point;
 import java.util.*;
 
 public class EdgeFinder {
-
-    public static List<Edge> find(Graph graph) {
+    public static ArrayList<Edge> find(Graph graph) {
         ArrayList<Point> points = graph.getPoints();
         ArrayList<Edge> edges = new ArrayList<>();
 
         for (int i = 0; i < points.size(); ++i) {
+
             for (int j = i + 1; j < points.size(); ++j) {
+                ArrayList<Point> path;
                 if (points.get(i).getX() <= points.get(j).getX() && points.get(i).getY() <= points.get(j).getY()) {
-                    List<Point> path = bfs(points.get(i), points.get(j), graph.getBlocks());
-                    edges.add(new Edge(i, j, path));
+                    path = bfs(points.get(i), points.get(j), graph.getBlocks());
+                } else {
+                    path = bfs(points.get(j), points.get(i), graph.getBlocks());
                 }
+                edges.add(new Edge(i, j, path));
             }
         }
 
         return edges;
     }
 
-    private static List<Point> bfs(Point start, Point end, List<Block> blocks) {
-        Queue<Point> queue = new LinkedList<Point>();
+    private static ArrayList<Point> bfs(Point start, Point end, List<Block> blocks) {
+        Queue<Point> queue = new LinkedList<>();
         queue.add(start);
         HashMap<Point, Point> predecessor = new HashMap<>();
 
@@ -62,7 +67,7 @@ public class EdgeFinder {
         return null;
     }
 
-    private static List<Point> findPath(Point start, Point end, HashMap<Point, Point> predecessor) {
+    private static ArrayList<Point> findPath(Point start, Point end, HashMap<Point, Point> predecessor) {
         ArrayList<Point> path = new ArrayList<>();
         Point current = end;
 

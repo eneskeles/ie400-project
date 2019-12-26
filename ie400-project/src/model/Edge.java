@@ -1,13 +1,14 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Edge {
     private int firstPointIndex;
     private int secondPointIndex;
-    private List<Point> path;
+    private ArrayList<Point> path;
 
-    public Edge(int firstPointIndex, int secondPointIndex, List<Point> path) {
+    public Edge(int firstPointIndex, int secondPointIndex, ArrayList<Point> path) {
         this.firstPointIndex = firstPointIndex;
         this.secondPointIndex = secondPointIndex;
         this.path = path;
@@ -28,7 +29,7 @@ public class Edge {
         return secondPointIndex;
     }
 
-    public List<Point> getPath() {
+    public ArrayList<Point> getPath() {
         return path;
     }
 
@@ -40,7 +41,7 @@ public class Edge {
         this.secondPointIndex = secondPointIndex;
     }
 
-    public void setPath(List<Point> path) {
+    public void setPath(ArrayList<Point> path) {
         this.path = path;
     }
 }
