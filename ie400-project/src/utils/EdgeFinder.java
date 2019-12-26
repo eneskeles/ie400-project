@@ -1,4 +1,4 @@
-package Utils;
+package utils;
 
 import model.Block;
 import model.Edge;
@@ -28,7 +28,7 @@ public class EdgeFinder {
         return edges;
     }
 
-    private static ArrayList<Point> bfs(Point start, Point end, List<Block> blocks) {
+    private static ArrayList<Point> bfs(Point start, Point end, ArrayList<Block> blocks) {
         Queue<Point> queue = new LinkedList<>();
         queue.add(start);
         HashMap<Point, Point> predecessor = new HashMap<>();
@@ -45,7 +45,7 @@ public class EdgeFinder {
             }
 
             if (!intersects) {
-                if (current == end) {
+                if (current.equals(end)) {
                     return findPath(start, end, predecessor);
                 }
 
@@ -71,7 +71,7 @@ public class EdgeFinder {
         ArrayList<Point> path = new ArrayList<>();
         Point current = end;
 
-        while (current != start) {
+        while (current != null && !current.equals(start)) {
             path.add(0, current);
             current = predecessor.get(current);
         }
@@ -79,5 +79,6 @@ public class EdgeFinder {
         path.add(0, start);
         return path;
     }
+
 }
 

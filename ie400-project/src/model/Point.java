@@ -39,4 +39,8 @@ public class Point {
         return (this.x == ((Point)other).x && this.y == ((Point)other).y);
     }
 
+    @Override
+    public int hashCode() {
+        return this.x * (int)1e9 + this.y;
+    }
 }

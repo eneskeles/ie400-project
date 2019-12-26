@@ -1,6 +1,6 @@
 package model;
 
-import Utils.EdgeFinder;
+import utils.EdgeFinder;
 import java.util.ArrayList;
 
 public class Graph {
